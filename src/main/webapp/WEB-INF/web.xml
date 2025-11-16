@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+                             http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>yudimira_AA2_EV02</display-name>
+
+    <!-- Listar clientes -->
+    <servlet>
+        <servlet-name>ListarClientesServlet</servlet-name>
+        <servlet-class>controllers.ListarClientesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarClientesServlet</servlet-name>
+        <url-pattern>/listarClientes</url-pattern>
+    </servlet-mapping>
+
+    <!-- Crear cliente -->
+    <servlet>
+        <servlet-name>CrearClienteServlet</servlet-name>
+        <servlet-class>controllers.CrearClienteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CrearClienteServlet</servlet-name>
+        <url-pattern>/crearCliente</url-pattern>
+    </servlet-mapping>
+
+    <!-- Eliminar cliente -->
+    <servlet>
+        <servlet-name>EliminarClienteServlet</servlet-name>
+        <servlet-class>controllers.EliminarClienteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EliminarClienteServlet</servlet-name>
+        <url-pattern>/eliminarCliente</url-pattern>
+    </servlet-mapping>
+    
+    <!-- PRODUCTOS -->
+<servlet>
+    <servlet-name>ListarProductosServlet</servlet-name>
+    <servlet-class>controllers.ListarProductosServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ListarProductosServlet</servlet-name>
+    <url-pattern>/listarProductos</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>CrearProductoServlet</servlet-name>
+    <servlet-class>controllers.CrearProductoServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CrearProductoServlet</servlet-name>
+    <url-pattern>/crearProducto</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>EliminarProductoServlet</servlet-name>
+    <servlet-class>controllers.EliminarProductoServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>EliminarProductoServlet</servlet-name>
+    <url-pattern>/eliminarProducto</url-pattern>
+</servlet-mapping>
+
+<!-- PROVEEDORES -->
+
+<!-- Listar proveedores -->
+<servlet>
+    <servlet-name>ListarProveedoresServlet</servlet-name>
+    <servlet-class>controllers.ListarProveedoresServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ListarProveedoresServlet</servlet-name>
+    <url-pattern>/listarProveedores</url-pattern>
+</servlet-mapping>
+
+<!-- Crear proveedor -->
+<servlet>
+    <servlet-name>CrearProveedoresServlet</servlet-name>
+    <servlet-class>controllers.CrearProveedoresServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CrearProveedoresServlet</servlet-name>
+    <url-pattern>/crearProveedor</url-pattern>
+</servlet-mapping>
+
+<!-- Eliminar proveedor -->
+<servlet>
+    <servlet-name>EliminarProveedoresServlet</servlet-name>
+    <servlet-class>controllers.EliminarProveedoresServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>EliminarProveedoresServlet</servlet-name>
+    <url-pattern>/eliminarProveedor</url-pattern>
+</servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>clientes.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>

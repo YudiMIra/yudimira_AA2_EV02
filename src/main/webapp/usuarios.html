@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Usuarios</title>
+
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: #34495e;
+            padding: 25px;
+            color: white;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* FORMULARIO */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-row input,
+        .form-row select {
+            padding: 9px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            padding: 10px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        /* TABLA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+            padding: 6px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .volver {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2980b9;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .volver:hover {
+            color: #1c5986;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Usuarios</h1>
+</header>
+
+<div class="container">
+
+    <section>
+        <h2>Crear usuario</h2>
+
+        <div class="form-row">
+            <input id="username" placeholder="Usuario">
+            <input id="fullname" placeholder="Nombre completo">
+            <select id="role">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <input id="password" placeholder="Contraseña">
+            <button class="btn-primary" onclick="createUser()">Crear</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>Lista de usuarios</h2>
+
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <a class="volver" href="index.html">⬅ Volver</a>
+
+</div>
+
+<!-- SCRIPT ORIGINAL -->
+<script>
+async function loadUsers() {
+    const res = await fetch('/api/usuarios');
+    const data = await res.json();
+    const tbody = document.querySelector('#usersTable tbody');
+    tbody.innerHTML = '';
+
+    data.forEach(u => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+            <td>${u.id}</td>
+            <td>${u.username}</td>
+            <td>${u.fullname}</td>
+            <td>${u.role}</td>
+            <td>
+                <button class="btn-delete" onclick="deleteUser(${u.id})">Eliminar</button>
+            </td>
+        `;
+
+        tbody.appendChild(tr);
+    });
+}
+
+async function createUser() {
+    const username = document.getElementById('username').value;
+    const fullname = document.getElementById('fullname').value;
+    const role = document.getElementById('role').value;
+    const password = document.getElementById('password').value;
+
+    await fetch('/api/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, fullname, role })
+    });
+
+    loadUsers();
+}
+
+async function deleteUser(id) {
+    if (!confirm('¿Eliminar usuario?')) return;
+
+    await fetch('/api/usuarios/' + id, {
+        method: 'DELETE'
+    });
+
+    loadUsers();
+}
+
+window.onload = loadUsers;
+</script>
+
+</body>
+</html>

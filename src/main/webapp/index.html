@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gestión Tienda</title>
+
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: #34495e;
+            padding: 25px;
+            color: white;
+            text-align: center;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 70%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        /* MENÚ */
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 12px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 6px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #2980b9;
+        }
+
+        .descripcion {
+            margin-top: 30px;
+            text-align: center;
+            color: #555;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Gestión Tienda</h1>
+</header>
+
+<div class="container">
+
+    <h2>Menú Principal</h2>
+
+    <nav>
+        <ul>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            <li><a href="clientes.jsp">Clientes</a></li>
+            <li><a href="proveedores.jsp">Proveedores</a></li>
+            <li><a href="productos.jsp">Productos</a></li>
+            <li><a href="ventas.html">Ventas</a></li>
+            <li><a href="informes.html">Informes</a></li>
+        </ul>
+    </nav>
+
+    <p class="descripcion">
+        Página de administración básica para la gestión de la tienda.
+    </p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+body{font-family:Arial, sans-serif;background:#f6f8fa;margin:0;padding:0}
+header{background:#0070D9;color:white;padding:1rem;text-align:center}
+main{padding:1rem}
+nav ul{display:flex;gap:10px;list-style:none;padding:0;margin:0 0 1rem 0;flex-wrap:wrap}
+nav a{background:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none;color:#0070D9;border:1px solid #d0e6ff}
+table{width:100%;border-collapse:collapse;margin-top:1rem}
+th,td{border:1px solid #ddd;padding:.5rem;text-align:left}
+.form-row{display:flex;gap:.5rem;flex-wrap:wrap}
+input,select,button,textarea{padding:.5rem;border:1px solid #ccc;border-radius:4px}
+button{background:#0070D9;color:white;border:none;padding:.5rem 1rem;border-radius:6px;cursor:pointer}
